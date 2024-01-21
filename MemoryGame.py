@@ -6,7 +6,7 @@ class MemoryGame:
         pyxel.init(128, 128, title="Memorygame")
         self.initial_grid_size = 4
         self.advanced_grid_size = 6
-        self.cell_size = 16
+        self.cell_size = 32
         self.grid_size = self.initial_grid_size
         self.sample_pattern = self.generate_pattern(self.grid_size)
         self.user_pattern = [[0 for _ in range(self.grid_size)] for _ in range(self.grid_size)]
@@ -103,6 +103,9 @@ class MemoryGame:
         self.show_sample = True
         self.timer = 0
         self.error_count = 0
+        if self.level == 4:
+            self.grid_size = self.advanced_grid_size
+            self.cell_size = 128 // self.advanced_grid_size
 
     def draw(self):
         if not self.game_started:
@@ -126,7 +129,7 @@ class MemoryGame:
         cursor_y = min(pyxel.mouse_y, pyxel.height - cursor_size)
         pyxel.rect(cursor_x, cursor_y, cursor_size, cursor_size, pyxel.COLOR_RED)
 
-        pyxel.text(72, 120, f"Skips left: {self.skip_remaining}", pyxel.COLOR_YELLOW)
+        pyxel.text(72, 117, f"Skips left: {self.skip_remaining}", pyxel.COLOR_YELLOW)
         pyxel.text(3, 3, f"Errors Left: {3 - self.error_count}", pyxel.COLOR_YELLOW)
 
         if self.game_over:
