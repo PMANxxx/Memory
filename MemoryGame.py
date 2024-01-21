@@ -5,7 +5,7 @@ class MemoryGame:
     def __init__(self):
         pyxel.init(128, 128, title="Memorygame")
         self.initial_grid_size = 4
-        self.advanced_grid_size = 8
+        self.advanced_grid_size = 6
         self.cell_size = 16
         self.grid_size = self.initial_grid_size
         self.sample_pattern = self.generate_pattern(self.grid_size)
