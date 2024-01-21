@@ -3,7 +3,7 @@ import random
 
 class MemoryGame:
     def __init__(self):
-        pyxel.init(128, 128, title="メモリーゲーム")
+        pyxel.init(128, 128, title="Memorygame")
         self.initial_grid_size = 4
         self.advanced_grid_size = 8
         self.cell_size = 16
@@ -90,7 +90,6 @@ class MemoryGame:
             if self.timer > self.time_limit:
                 self.game_over = True
 
-            # スキップ機能の処理
             if pyxel.btnp(pyxel.KEY_S) and self.skip_remaining > 0:
                 self.skip_remaining -= 1
                 self.next_level()
