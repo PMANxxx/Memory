@@ -18,7 +18,6 @@ class MemoryGame:
         self.time_limit = 30 * 60
         self.game_started = False
 
-        # 音響フィードバック用のサウンドを設定
         pyxel.sound(0).set("c3", "p", "3", "s", 10)
         pyxel.sound(1).set("g3", "t", "7", "n", 10)
 
@@ -26,7 +25,7 @@ class MemoryGame:
         self.highlight_duration = 10
         self.highlight_timer = 0
 
-        self.skip_remaining = 2  # ゲーム全体でのスキップ残数
+        self.skip_remaining = 2  
 
         pyxel.run(self.update, self.draw)
 
@@ -40,8 +39,6 @@ class MemoryGame:
         self.game_over = False
         self.level = 1
         self.time_limit = 30 * 60
-    # 必要に応じて他の変数もリセット
-
 
     def generate_pattern(self, size):
         return [[random.randint(0, 1) for _ in range(size)] for _ in range(size)]
@@ -130,7 +127,6 @@ class MemoryGame:
         cursor_y = min(pyxel.mouse_y, pyxel.height - cursor_size)
         pyxel.rect(cursor_x, cursor_y, cursor_size, cursor_size, pyxel.COLOR_RED)
 
-        # スキップ残数の表示
         pyxel.text(72, 120, f"Skips left: {self.skip_remaining}", pyxel.COLOR_YELLOW)
         pyxel.text(3, 3, f"Errors Left: {3 - self.error_count}", pyxel.COLOR_YELLOW)
 
@@ -142,7 +138,6 @@ class MemoryGame:
                 self.draw_centered_text("R to Restart", pyxel.height // 2 + 10, pyxel.COLOR_WHITE)
 
     def draw_centered_text(self, text, y, color):
-        """テキストを画面中央に表示するヘルパー関数"""
         text_width = pyxel.FONT_WIDTH * len(text)
         text_x = (pyxel.width - text_width) // 2
         pyxel.text(text_x, y, text, color)
